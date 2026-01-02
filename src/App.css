@@ -104,11 +104,81 @@ h1 {
 
 .logo-section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.logo-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo-shape-options,
+.logo-size-options {
+  display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
+}
+
+.option-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  min-width: 50px;
+}
+
+.shape-buttons,
+.size-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.shape-btn,
+.size-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.shape-btn {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+}
+
+.shape-btn:hover,
+.size-btn:hover {
+  border-color: #667eea;
+  background: #f5f5ff;
+}
+
+.shape-btn.active,
+.size-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.size-warning {
+  width: 100%;
+  padding: 8px 12px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  color: #856404;
+  font-size: 0.85rem;
+  margin-top: 5px;
 }
 
 .logo-upload-label {
@@ -150,12 +220,90 @@ h1 {
   box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
 }
 
+.center-style-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.center-style-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.center-style-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.center-style-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.center-style-btn:hover:not(:disabled) {
+  border-color: #667eea;
+  background: #f5f5ff;
+}
+
+.center-style-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.center-style-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .qr-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
   animation: slideUp 0.5s ease-in;
+}
+
+.scan-safety {
+  font-size: 0.95rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.safety-safe {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.safety-risky {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.download-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 @keyframes slideUp {
@@ -178,43 +326,108 @@ h1 {
   position: relative;
 }
 
+.cutout-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cutout-overlay.cutout-circle {
+  border-radius: 50%;
+}
+
+.cutout-overlay.cutout-square {
+  border-radius: 0;
+}
+
+.cutout-overlay.cutout-rounded {
+  border-radius: 12px;
+}
+
+.cutout-logo {
+  object-fit: contain;
+  display: block;
+}
+
+.cutout-overlay.cutout-circle .cutout-logo {
+  border-radius: 50%;
+}
+
+.cutout-overlay.cutout-rounded .cutout-logo {
+  border-radius: 8px;
+}
+
+.cutout-overlay.cutout-square .cutout-logo {
+  border-radius: 0;
+}
+
 .logo-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  border-radius: 8px;
-  padding: 8px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.logo-overlay.logo-circle {
+  border-radius: 50%;
+}
+
+.logo-overlay.logo-rounded {
+  border-radius: 12px;
+}
+
+.logo-overlay.logo-square {
+  border-radius: 0;
+}
+
 .qr-logo {
-  width: 64px;
-  height: 64px;
   object-fit: contain;
-  border-radius: 4px;
+  display: block;
+}
+
+.logo-overlay.logo-circle .qr-logo {
+  border-radius: 50%;
+}
+
+.logo-overlay.logo-rounded .qr-logo {
+  border-radius: 8px;
+}
+
+.logo-overlay.logo-square .qr-logo {
+  border-radius: 0;
 }
 
 .download-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .download-btn {
-  padding: 12px 25px;
+  padding: 12px 20px;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
+  white-space: nowrap;
 }
 
 .download-image {
@@ -255,9 +468,43 @@ h1 {
     width: 100%;
   }
 
-  .download-buttons {
+  .logo-options {
+    max-width: 100%;
+  }
+
+  .logo-shape-options,
+  .logo-size-options {
     flex-direction: column;
+    align-items: flex-start;
     width: 100%;
+  }
+
+  .shape-buttons,
+  .size-buttons {
+    width: 100%;
+  }
+
+  .shape-btn,
+  .size-btn {
+    flex: 1;
+  }
+
+  .center-style-options {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .center-style-buttons {
+    width: 100%;
+  }
+
+  .center-style-btn {
+    flex: 1;
+  }
+
+  .download-buttons {
+    grid-template-columns: 1fr;
   }
 
   .download-btn {
